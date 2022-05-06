@@ -7,3 +7,7 @@ workflows:
   test:
     jobs:
       - node/test
+      - node/run:
+          npm-run: check:lint 
+      - node/run:
+          npm-run: check:format 
