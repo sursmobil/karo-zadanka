@@ -4,6 +4,14 @@ orbs:
   node: circleci/node@5.0.2
 
 workflows:
-  test:
+  check:
     jobs:
-      - node/test
+      - node/test:
+          test-results-for: jest
+      - node/run:
+          name: lint
+          npm-run: check:lint 
+      - node/run:
+          name: format
+          npm-run: check:format 
+      
